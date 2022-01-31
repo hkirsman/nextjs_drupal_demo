@@ -87,3 +87,6 @@ web/autoload.php
 web/index.php
 .editorconfig
 .gitattributes
+
+# Keys of oauth
+keys/
