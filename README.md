@@ -4,7 +4,7 @@ Create this based on https://next-drupal.org/ to see how this works and how to c
 
 ## Setup
 
-### Install Drupal
+### Clone this project and install Drupal
 
 1. git clone git@github.com:hkirsman/nextjs_drupal_demo.git
 2. cd nextjs_drupal_demo
