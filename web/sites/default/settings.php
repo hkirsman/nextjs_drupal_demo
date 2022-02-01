@@ -769,14 +769,13 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 # if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
-$databases['default']['default'] = array (
-  'database' => 'drupal9',
-  'username' => 'drupal9',
-  'password' => 'drupal9',
-  'prefix' => '',
-  'host' => 'database',
-  'port' => '',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+$lando_info = json_decode(getenv('LANDO_INFO'), TRUE);
+$databases['default']['default'] = [
   'driver' => 'mysql',
-);
+  'database' => $lando_info['database']['creds']['database'],
+  'username' => $lando_info['database']['creds']['user'],
+  'password' => $lando_info['database']['creds']['password'],
+  'host' => $lando_info['database']['internal_connection']['host'],
+  'port' => $lando_info['database']['internal_connection']['port'],
+];
 $settings['config_sync_directory'] = '../config/sync';

@@ -11,15 +11,16 @@ proxy:
 
 services:
   appserver:
-    scanner: false
+    overrides:
+      environment:
+        DRUSH_OPTIONS_URI: https://next-drupal-backend.lndo.site
   frontend:
     type: node
+    build:
+      - cd nextjs_drupal_basic_starter && npm install
     overrides:
       ports:
         - "3000:3000"
-    # Not ideal to run node server on startup but for a demo it'll make things easier.
-    run:
-      - cd first-nextjs/ && npm run dev
 
 tooling:
   npx:

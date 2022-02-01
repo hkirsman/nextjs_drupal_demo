@@ -54,8 +54,8 @@ module:
   views_ui: 0
   pathauto: 1
   views: 10
-  standard: 1000
+  minimal: minimal
 theme:
   bartik: 0
   seven: 0
-profile: standard
+profile: minimal
