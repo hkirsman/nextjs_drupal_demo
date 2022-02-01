@@ -2,13 +2,29 @@ name: next-drupal
 recipe: drupal9
 config:
   webroot: web
-  drush: true
+
+proxy:
+  appserver:
+    - next-drupal-backend.lndo.site
+  frontend:
+    - next-drupal-frontend.lndo.site:3000
 
 services:
-  node:
+  appserver:
+    scanner: false
+  frontend:
     type: node
+    overrides:
+      ports:
+        - "3000:3000"
+    # Not ideal to run node server on startup but for a demo it'll make things easier.
+    run:
+      - cd first-nextjs/ && npm run dev
 
 tooling:
   npx:
     description: "Runs npx commands"
-    service: node
+    service: frontend
+  npm:
+    description: "Runs npm commands"
+    service: frontend
